@@ -83,6 +83,7 @@ matriz_resultado <- varredura_matriz(matriz_a)
 
 #criação de matriz
 
+
 matriz_exercicio_1 <- matrix(c(3, -3, 6, -8,
                              1, 2, -10, -7,
                              8, -2, -9, -4,
@@ -99,10 +100,52 @@ matriz_exercicio_2 <- matrix(c(-1, 8, 13, -16,
                              byrow = TRUE)
 
 
+matriz_exercicio_3 <- matrix(c(-22, 14, 21, 19,
+                               23, -20, -17, 17,
+                               -7, -11, -23, 28,
+                               24, -14, -5, 8),
+                             ncol = 4,
+                             byrow = TRUE)
 
-exercicio_1 <- varredura_matriz(matriz_exercicio_1)
-exercicio_2 <- varredura_matriz(matriz_exercicio_2)
 
-round(exercicio_1, 2)
-round(exercicio_2, 2)
+exercicio_3 <- varredura_matriz(matriz_exercicio_3)
+
+  
+
+# -------------------------------------------------
+  
+#fazendo agora o exercicio 3 da lista de treino
+
+
+#preciso do banco de dados para fazer essa questao
+
+
+# EXERCICIOS DO CHATGPT
+
+cv <- function(x){
+  coeficiente_variacao = round((sd(x)/mean(x))*100, 2)
+  return(coeficiente_variacao)
+}
+
+dados <- airquality
+dados_limpos <- na.omit(airquality)
+
+sum(is.na(dados_limpos))
+
+cv(airquality$Wind)
+cv(dados_limpos$Ozone)
+cv(airquality$Temp)
+cv(dados_limpos$Solar.R)
+
+
+
+
+
+
+
+
+
+
+
+
 
