@@ -3,10 +3,13 @@
 #fazendo tudo de novo para o treino da prova da deisy
 
 
+install.packages("data.table")
+install.packages("dplyr")
 
 require(data.table)
+require(dplyr)
 
-dados <- fread("C:\\Users\\FUJIMOTO\\Documents\\treino_deisy\\pokemon.csv")
+dados <- fread("C:\\Users\\vitor\\OneDrive\\Documentos\\treino_deisy\\pokemon.csv")
 
 s_quadrado <- function(x, media){
   sum((x-media)^2)/length(x)
@@ -45,8 +48,13 @@ eh_primo <- function(n){
 }
 
 quadrado_perfeito <- function(n){
+  if (n < 0) {
+    return(FALSE) 
+  }
   return(sqrt(n) == floor(sqrt(n)))
 }
+
+
 
 varredura_matriz <- function(matriz){
   for(i in 1:nrow(matriz)){
@@ -61,10 +69,10 @@ varredura_matriz <- function(matriz){
         }
     
       }
-      # é pra ter um IF aqui das outras restrições  
-        
-        
-    
+      if(matriz[i, j] < 0){
+        matriz[i, j] = (abs(matriz[i, j]))^(1/3)
+      }
+      #aqui acabam as restrições, questao SOLADA!
     }
   }
   return(matriz) 
@@ -73,13 +81,28 @@ varredura_matriz <- function(matriz){
 matriz_resultado <- varredura_matriz(matriz_a)
 # -------------------------------------------------
 
+#criação de matriz
 
-matriz_quadrado_perfeito <- varredura_matriz_quadrado(matriz_a)
+matriz_exercicio_1 <- matrix(c(3, -3, 6, -8,
+                             1, 2, -10, -7,
+                             8, -2, -9, -4,
+                             10, -5, -1, 7),
+                           ncol = 4,
+                           byrow = TRUE)
 
-# ---------------------------------------------
+matriz_exercicio_2 <- matrix(c(-1, 8, 13, -16,
+                               0, 16, 18, -6,
+                               -18, -15, -2, -11,
+                               11, -12, -13, 3,
+                               -4, 5, -19, 17),
+                             ncol = 4,
+                             byrow = TRUE)
 
 
 
+exercicio_1 <- varredura_matriz(matriz_exercicio_1)
+exercicio_2 <- varredura_matriz(matriz_exercicio_2)
 
-
+round(exercicio_1, 2)
+round(exercicio_2, 2)
 
